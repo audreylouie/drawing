@@ -1,0 +1,44 @@
+<html>
+<body>
+    <canvas id="myCanvas" onmousemove="respondToMouse2(event)" ontouchmove="respondToTouch2(event)">
+    </canvas>
+    <style>
+        body{
+            overflow:hidden;
+        }
+    </style>
+    <script>
+        let c = document.getElementById("myCanvas");
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        let canvas = c.getContext("2d");
+        canvas.fillStyle = "red";
+
+        // one stroke - mouse
+        function respondToMouse(e){
+            console.log("Your co-ordinates are: ", e.clientX, e.clientY);
+            canvas.fillRect(e.clientX,e.clientY,10,10);
+        }
+        
+        function respondToMouse2(e){
+            for(let n=0; n<100; n+=10){
+                canvas.fillRect(e.clientX + n,e.clientY + n,10,10);
+            }
+            
+        }
+
+        // one stroke - touchscreen
+        function respondToTouch(e){
+            console.log("Your co-ordinates are: ", e.touches[0].clientX, e.touches[0].clientY);
+            canvas.fillRect(e.touches[0].clientX, e.touches[0].clientY,10,10);
+        }
+
+        function respondToTouch2(e){
+            for(let n=0; n<100; n+=10){
+                canvas.fillRect(e.touches[0].clientX + n, e.touches[0].clientY + n,10,10);
+            }
+            
+        }
+    </script>
+</body>
+</html>
